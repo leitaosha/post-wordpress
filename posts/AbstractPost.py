@@ -6,14 +6,16 @@
 
 
 from abc import ABC, abstractmethod
+from utiles.config import *
+from utiles.util import setAttrForObj
 
 
 # Posts类
-class AbstractPosts(ABC):
+class AbstractPost(ABC):
 
     def __init__(self):
-        self.tags = None
-        self.categories = None
+        self.tags = []
+        self.categories = []
         self.template = None
         self.sticky = None
         self.meta = None
@@ -38,23 +40,7 @@ class AbstractPosts(ABC):
         self.guid = None
         self.date_gmt = None
         self.date = None
+        setAttrForObj(self, WP_OPTIONS)
 
-    @abstractmethod
-    def list(self):
-        pass
 
-    @abstractmethod
-    def create(self):
-        pass
 
-    @abstractmethod
-    def update(self):
-        pass
-
-    @abstractmethod
-    def delete(self):
-        pass
-
-    @abstractmethod
-    def retrieve(self):
-        pass

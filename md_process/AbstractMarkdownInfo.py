@@ -9,9 +9,6 @@ from abc import ABC, abstractmethod
 
 class AbstractMarkdownInfo(ABC):
     def __init__(self):
-        # yaml信息
-        self.title = None
-        self.tags = None
         # 初始化yaml和content
         self.md_content = None
         self.md_yaml = None

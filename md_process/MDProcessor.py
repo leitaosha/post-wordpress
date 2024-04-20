@@ -8,7 +8,7 @@ from md_process.MarkdownParse import MarkdownInfo
 from abc import ABC, abstractmethod
 
 
-class MarkdownPreprocessor(ABC):
+class MDProcessor(ABC):
     def __init__(self, markdown: MarkdownInfo):
         self.markdown = markdown
 

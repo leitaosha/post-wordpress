@@ -13,14 +13,13 @@ from utiles.util import setAttrForObj
 class MarkdownInfo(AbstractMarkdownInfo):
     def __init__(self, post: frontmatter.Post):
         super().__init__()
-        # 需要设置的
-        # 草稿、发布
-        self.wpStatus = None
-        # 评论
-        self.wpComment = None
+        # yaml必备信息
+        self.title = None
+        self.tags = None
+        self.excerpt = None
         # 分类
-        self.wpCategory = None
-        # wp站点元信息
+        self.categories = None
+        # wp元信息
         self.wp = WordPressMeta()
         # 初始化yaml和content
         self.post = post if type(post) is frontmatter.Post and post else None
@@ -34,17 +33,11 @@ class MarkdownInfo(AbstractMarkdownInfo):
     def getTitle(self):
         return self.title
 
-    def getStatus(self):
-        return self.wpStatus
-
     def getContent(self):
         return self.md_content
 
-    def getWpComment(self):
-        return self.wpComment
-
-    def getWpCategory(self):
-        return self.wpCategory
+    def getCategories(self):
+        return self.categories
 
     def __setAttr(self):
         setAttrForObj(self, self.md_yaml)
@@ -87,10 +80,10 @@ def getMarkdown(md_path):
 # test
 path = r"E:\Project\PythonProject\postWordpress\测试.md"
 markdown = getMarkdown(path)
-print(markdown.title, markdown.wp.wpLink)
+print(markdown.title, markdown.wp.link, str(markdown.wp))
 # 更新测试
-print("-----update-----")
-wpmeta = WordPressMeta()
-wpmeta.wpLink = "测试"
-markdown.updateYaml({"title": '测试更新', 'wp': wpmeta})
-print(markdown.title, markdown.wp.wpLink, markdown.post.metadata)
+# print("-----update-----")
+# wpmeta = WordPressMeta()
+# wpmeta.link = "测试"
+# markdown.updateYaml({"title": '测试更新', 'wp': wpmeta})
+# print(markdown.title, markdown.wp.wpLink, markdown.post.metadata)

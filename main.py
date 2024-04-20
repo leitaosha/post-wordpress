@@ -10,11 +10,11 @@ from concurrent.futures import as_completed
 
 
 def submitTag(tagName: str):
-    return Tag(tagName).createTag()
+    return Tag(tagName).create()
 
 
 def deleteTag(tagName: str):
-    return Tag(tagName).deleteTag()
+    return Tag(tagName).delete()
 
 
 tag_list = [

@@ -4,12 +4,12 @@
 # Email: 473153250@qq.com
 # CreateTime: 2024/4/18
 from urllib.parse import urljoin
-
-from posts.AbstractPosts import AbstractPosts
+from utiles.util import setAttrForObj
+from posts.AbstractPost import AbstractPost
 from utiles.config import *
 
 
-class Post(AbstractPosts):
+class Post(AbstractPost):
 
     def __init__(self):
         super().__init__()
@@ -29,3 +29,12 @@ class Post(AbstractPosts):
 
     def retrieve(self):
         pass
+
+    def toDict(self, containList):
+        attrDict = self.__dict__
+        return {key: attrDict.pop(key) for key in containList if key in attrDict}
+
+
+# 测试
+obj = Post()
+obj.toDict()

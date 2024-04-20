@@ -10,19 +10,27 @@ from abc import ABC, abstractmethod
 # tag类
 class AbstractCategory(ABC):
 
-    def __init__(self):
-        self.id = None
+    def __init__(self, categoryName: str, categoryId: int = None):
+        self.id = categoryId
         self.count = None
         self.description = None
         self.link = None
-        self.name = None
+        self.name = categoryName
         self.slug = None
         self.taxonomy = None
         self.parent = None
         self.meta = None
 
     @abstractmethod
-    def listCategories(self):
+    def list(self):
+        pass
+
+    @abstractmethod
+    def create(self):
+        pass
+
+    @abstractmethod
+    def search(self):
         pass
 
 

@@ -4,7 +4,6 @@
 # Email: 473153250@qq.com
 # CreateTime: 2024/4/18
 from urllib.parse import urljoin
-
 from posts.AbstractTag import AbstractSingleTag
 import requests
 from utiles.config import WORDPRESS_SITE, AUTHORIZATION

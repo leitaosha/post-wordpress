@@ -39,20 +39,22 @@ class AbstractPosts(ABC):
         self.date_gmt = None
         self.date = None
 
-
     @abstractmethod
-    def listPosts(self):
+    def list(self):
         pass
 
     @abstractmethod
-    def createPosts(self):
+    def create(self):
         pass
 
     @abstractmethod
-    def updatePosts(self):
+    def update(self):
         pass
 
     @abstractmethod
-    def deletePosts(self):
+    def delete(self):
         pass
 
+    @abstractmethod
+    def retrieve(self):
+        pass

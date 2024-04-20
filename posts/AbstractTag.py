@@ -22,21 +22,21 @@ class AbstractSingleTag(ABC):
         self.meta = None
 
     @abstractmethod
-    def searchTag(self):
+    def search(self):
         pass
 
     @abstractmethod
-    def createTag(self):
+    def create(self):
         pass
 
     @abstractmethod
-    def retrieveTag(self):
+    def retrieve(self):
         pass
 
     @abstractmethod
-    def updateTag(self, newTagName):
+    def update(self, newTagName):
         pass
 
     @abstractmethod
-    def deleteTag(self):
+    def delete(self):
         pass

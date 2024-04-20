@@ -31,7 +31,7 @@ class Tag(AbstractSingleTag):
         return urljoin(WORDPRESS_SITE, f'/wp-json/wp/v2/tags/{self.id}')
 
     # Action
-    def searchTag(self):
+    def search(self):
         """
         search tag by name
         :return: class Message
@@ -46,7 +46,7 @@ class Tag(AbstractSingleTag):
         else:
             return Message(False, "status code not defined!", res.status_code)
 
-    def createTag(self):
+    def create(self):
         """
         create tag by name
         :return: class Message
@@ -62,7 +62,7 @@ class Tag(AbstractSingleTag):
         else:
             return Message(False, "Failed to create tag !", res.status_code)
 
-    def updateTag(self, newTagName):
+    def update(self, newTagName):
         """
         update tag by name
         :param newTagName: new tag
@@ -76,7 +76,7 @@ class Tag(AbstractSingleTag):
         else:
             return Message(False, "Tag does not exist!", 404)
 
-    def retrieveTag(self):
+    def retrieve(self):
         """
         get tag by id, self.id should be set before retrieve.
         :return: Message
@@ -85,7 +85,7 @@ class Tag(AbstractSingleTag):
         setAttrForObj(self, res.json()) if res.status_code == 200 else print('retrieved fail! it is not exists!')
         return Message(True, "Retrieve tag successfully!", res.status_code)
 
-    def deleteTag(self):
+    def delete(self):
         """
         delete tag by id
         :return: Message
@@ -112,11 +112,11 @@ class Tag(AbstractSingleTag):
 # 测试
 # start_time = time.time()
 # obj = Tag('pythonTags1')
-# print(obj.searchTag())
-# print(obj.createTag())
-# print(obj.updateTag("pytonTag"))
+# print(obj.search())
+# print(obj.create())
+# print(obj.update("pytonTag"))
 # print(str(obj))
-# print(str(obj.deleteTag()))
+# print(str(obj.delete()))
 # print(str(obj))
 # end_time = time.time()
 

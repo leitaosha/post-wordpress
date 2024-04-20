@@ -5,7 +5,7 @@ This is a python project that works with [Obsidian](https://obsidian.md/) to pus
 # Schedule
 
  - [x] Parsing Markdown 
- - [ ] Push Markdown to Wordpress
+ - [ ] Push Markdown to WordPress
  - [ ] Custom settings
 
 # Usage
@@ -27,9 +27,6 @@ USERNAME = '' # REST API USER NAME
 PASSWORD = '' 
 WORDPRESS_SITE = ''
 ```
-
-
-
 
 ## 4. Install Templater(Obsidian plugin)
 

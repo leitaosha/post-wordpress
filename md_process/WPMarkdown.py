@@ -10,7 +10,7 @@ from md_process.WordPressMeta import WordPressMeta
 from utiles.util import setAttrForObj
 
 
-class MarkdownInfo(AbstractMarkdownInfo):
+class WPMarkdown(AbstractMarkdownInfo):
     def __init__(self, post: frontmatter.Post):
         super().__init__()
         # yaml必备信息
@@ -74,7 +74,7 @@ def getMarkdown(md_path):
         obj = WordPressMeta()
         setAttrForObj(obj, wpMeta)
         parseMd.metadata['wp'] = obj
-    return MarkdownInfo(parseMd)
+    return WPMarkdown(parseMd)
 
 
 # test

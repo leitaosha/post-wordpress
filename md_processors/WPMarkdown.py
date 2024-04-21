@@ -73,13 +73,13 @@ class WPMarkdown(AbstractMarkdownInfo):
 def getMarkdown(md_path):
     with open(md_path, 'r', encoding='utf-8') as f:
         parseMd = frontmatter.load(f)
+    obj = Post()
+    setAttrForObj(obj, parseMd.metadata)
+    obj.tags, obj.categories = [], []
     if type(parseMd.metadata) is dict and "wp" in parseMd.metadata and parseMd.metadata['wp']:
         wpMeta = dict(parseMd.metadata['wp'])
-        obj = Post()
-        setAttrForObj(obj, parseMd.metadata)
         setAttrForObj(obj, wpMeta)
-        obj.tags, obj.categories = [], []
-        parseMd.metadata['wp'] = obj
+    parseMd.metadata['wp'] = obj
     return WPMarkdown(parseMd)
 
 # test

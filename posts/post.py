@@ -29,7 +29,7 @@ class Post(AbstractPost):
 
     def create(self):
         """
-        if id exists, update article
+        if id exists, update article. if not, then create.
         :return:
         """
         if self.id:
@@ -40,8 +40,14 @@ class Post(AbstractPost):
 
     def update(self):
         res = requests.post(self.URL_UPDATE_POST, json=self.postData, auth=AUTHORIZATION)
-        return Message(setAttrForObj(self, res.json()), f"<<{self.title}>> updated successfully!", res.status_code) \
-            if res.status_code == 200 else Message(False, f"<<{self.title}>> updated failed!", res.status_code)
+        if res.status_code == 200:
+            return Message(setAttrForObj(self, res.json()), f"<<{self.title}>> updated successfully!", res.status_code)
+        # if delete article remotely, then create.
+        elif res.status_code == 404:
+            self.id = None
+            self.create()
+        else:
+            return Message(False, f"<<{self.title}>> updated failed!", res.status_code)
 
     def delete(self):
         pass
@@ -59,6 +65,9 @@ class Post(AbstractPost):
         if excluded_fields is None:
             excluded_fields = []
         return {key: value for key, value in self.__dict__.items() if key not in excluded_fields and value}
+
+    def __str__(self):
+        return self.__dict__.__str__()
 
 
 # 测试

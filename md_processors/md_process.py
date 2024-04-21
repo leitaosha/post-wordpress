@@ -28,13 +28,10 @@ def process(markdown: WPMarkdown):
         wait(futures)
     return markdown
 
+mdPath = r'E:\Project\PythonProject\postWordpress\测试.md'
+# 原生md
+md = getMarkdown(mdPath)
+# 处理md
+md2 = process(md)
+print(md2.wp)
 
-# mdPath = r'E:\Project\PythonProject\postWordpress\测试.md'
-# md = getMarkdown(mdPath)
-# print(md.wp)
-# starttime = time.time()
-# md2 = process(md)
-# endtime = time.time()
-# print(md.wp.tags, md.wp.categories)
-# print(md2.wp)
-# print(endtime-starttime)

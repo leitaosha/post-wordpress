@@ -7,6 +7,7 @@
 import frontmatter
 from md_processors.AbstractMarkdownInfo import AbstractMarkdownInfo
 from md_processors.WordPressMeta import WordPressMeta
+from posts.post import Post
 from utiles.util import setAttrForObj
 
 
@@ -20,7 +21,7 @@ class WPMarkdown(AbstractMarkdownInfo):
         # 分类
         self.categories = None
         # wp元信息
-        self.wp = WordPressMeta()
+        self.wp = Post()
         # 初始化yaml和content
         self.post = post if type(post) is frontmatter.Post and post else None
         self.md_content, self.md_yaml = self.post.content, self.post.metadata if self.post else None
@@ -74,7 +75,7 @@ def getMarkdown(md_path):
         parseMd = frontmatter.load(f)
     if type(parseMd.metadata) is dict and "wp" in parseMd.metadata and parseMd.metadata['wp']:
         wpMeta = dict(parseMd.metadata['wp'])
-        obj = WordPressMeta()
+        obj = Post()
         setAttrForObj(obj, parseMd.metadata)
         setAttrForObj(obj, wpMeta)
         obj.tags, obj.categories = [], []

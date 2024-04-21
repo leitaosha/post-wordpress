@@ -5,9 +5,9 @@
 # CreateTime: 2024/4/20
 
 
-from md_process.WPMarkdown import WPMarkdown
+from md_processors.WPMarkdown import WPMarkdown
 from concurrent.futures import ThreadPoolExecutor
-from md_process.processors.AbstractMDProcessor import MDProcessor
+from md_processors.AbstractMDProcessor import MDProcessor
 from posts.tag import Tag
 
 

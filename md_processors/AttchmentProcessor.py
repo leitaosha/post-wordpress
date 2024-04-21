@@ -5,8 +5,8 @@
 # CreateTime: 2024/4/19
 from concurrent.futures import ThreadPoolExecutor
 
-from md_process.processors.AbstractMDProcessor import MDProcessor
-from md_process.WPMarkdown import WPMarkdown
+from md_processors.AbstractMDProcessor import MDProcessor
+from md_processors.WPMarkdown import WPMarkdown
 
 
 class AttachmentProcessor(MDProcessor):

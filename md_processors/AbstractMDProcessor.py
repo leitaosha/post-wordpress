@@ -4,7 +4,7 @@
 # Email: 473153250@qq.com
 # CreateTime: 2024/4/19
 
-from md_process.WPMarkdown import WPMarkdown
+from md_processors.WPMarkdown import WPMarkdown
 from abc import ABC, abstractmethod
 from concurrent.futures import ThreadPoolExecutor
 

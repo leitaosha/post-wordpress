@@ -5,8 +5,8 @@
 # CreateTime: 2024/4/18
 
 import frontmatter
-from md_process.AbstractMarkdownInfo import AbstractMarkdownInfo
-from md_process.WordPressMeta import WordPressMeta
+from md_processors.AbstractMarkdownInfo import AbstractMarkdownInfo
+from md_processors.WordPressMeta import WordPressMeta
 from utiles.util import setAttrForObj
 
 
@@ -64,6 +64,9 @@ class WPMarkdown(AbstractMarkdownInfo):
         self.post.content = self.md_content
         self.__updatePost()
 
+    def __str__(self):
+        return self.__dict__.__str__()
+
 
 # 解析markdown
 def getMarkdown(md_path):
@@ -72,15 +75,16 @@ def getMarkdown(md_path):
     if type(parseMd.metadata) is dict and "wp" in parseMd.metadata and parseMd.metadata['wp']:
         wpMeta = dict(parseMd.metadata['wp'])
         obj = WordPressMeta()
+        setAttrForObj(obj, parseMd.metadata)
         setAttrForObj(obj, wpMeta)
+        obj.tags, obj.categories = [], []
         parseMd.metadata['wp'] = obj
     return WPMarkdown(parseMd)
 
-
 # test
-path = r"E:\Project\PythonProject\postWordpress\测试.md"
-markdown = getMarkdown(path)
-print(markdown.title, markdown.wp.link, str(markdown.wp))
+# path = r"/测试.md"
+# markdown = getMarkdown(path)
+# print(markdown.title, markdown.wp.link, str(markdown.wp))
 # 更新测试
 # print("-----update-----")
 # wpmeta = WordPressMeta()

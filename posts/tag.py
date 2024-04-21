@@ -56,7 +56,7 @@ class Tag(AbstractSingleTag):
             return Message(True, "Create tag successfully!", res.status_code)
         elif res.status_code == 400:
             self.id = res.json()['data']['term_id']
-            self.retrieveTag()
+            # self.retrieveTag()
             return Message(True, "Tag already exists!", res.status_code)
         else:
             return Message(False, "Failed to create tag !", res.status_code)

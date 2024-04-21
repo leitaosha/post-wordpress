@@ -62,11 +62,11 @@ class Category(AbstractCategory):
 
 
 # 　测试
-obj = Category('Python')
+# obj = Category('Python')
 # print(obj.search())
 # print("list\n\n\n\n\n\n")
 # obj.list()
-print(obj.create())
-print(str(obj))
+# print(obj.create())
+# print(str(obj))
 # ojb = Category('python')
 # print(obj.create())

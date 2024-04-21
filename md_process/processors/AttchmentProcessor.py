@@ -3,15 +3,16 @@
 # Author: leitaosha
 # Email: 473153250@qq.com
 # CreateTime: 2024/4/19
+from concurrent.futures import ThreadPoolExecutor
 
-from md_process.processors.MDProcessor import MDProcessor
+from md_process.processors.AbstractMDProcessor import MDProcessor
 from md_process.WPMarkdown import WPMarkdown
 
 
 class AttachmentProcessor(MDProcessor):
 
-    def __init__(self, markdown: WPMarkdown):
-        super().__init__(markdown)
+    def __init__(self, markdown: WPMarkdown, thread_pool_executor: ThreadPoolExecutor):
+        super().__init__(markdown, thread_pool_executor)
 
     # attachment process
     def preprocess(self):

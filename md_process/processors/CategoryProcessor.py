@@ -5,7 +5,7 @@
 # CreateTime: 2024/4/21
 
 
-from md_process.processors.MDProcessor import MDProcessor
+from md_process.processors.AbstractMDProcessor import MDProcessor
 from md_process.WPMarkdown import WPMarkdown
 from concurrent.futures import ThreadPoolExecutor, as_completed
 

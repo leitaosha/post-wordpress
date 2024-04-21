@@ -7,7 +7,7 @@
 
 from md_process.WPMarkdown import WPMarkdown
 from concurrent.futures import ThreadPoolExecutor
-from md_process.processors.MDProcessor import MDProcessor
+from md_process.processors.AbstractMDProcessor import MDProcessor
 from posts.tag import Tag
 
 

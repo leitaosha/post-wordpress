@@ -14,7 +14,6 @@ WORDPRESS_SITE = ''
 WP_OPTIONS = {'status': 'publish',
               # article status in wordpress : draft(suggest), publish(suggest), future, pending, private
               'comment_status': 'open',
-              'slug': '',
               'sticky': 'false',
               }
 

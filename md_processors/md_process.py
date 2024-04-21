@@ -3,9 +3,8 @@
 # Author: leitaosha
 # Email: 473153250@qq.com
 # CreateTime: 2024/4/20
-
-
-from concurrent.futures import ThreadPoolExecutor
+import time
+from concurrent.futures import ThreadPoolExecutor, wait
 
 from md_processors.TagProcessor import TagProcessor
 from md_processors.CategoryProcessor import CategoryProcessor
@@ -15,7 +14,6 @@ from md_processors.WPMarkdown import WPMarkdown, getMarkdown
 MDProcessors = [
     TagProcessor,
     CategoryProcessor,
-
 ]
 
 
@@ -27,12 +25,16 @@ def process(markdown: WPMarkdown):
             future = executor.submit(processor.preprocess)
             futures.append(future)
             markdown = processor.markdown
+        wait(futures)
     return markdown
 
 
-mdPath = r'E:\Project\PythonProject\postWordpress\测试.md'
-md = getMarkdown(mdPath)
-print(md.wp)
-md2 = process(md)
+# mdPath = r'E:\Project\PythonProject\postWordpress\测试.md'
+# md = getMarkdown(mdPath)
+# print(md.wp)
+# starttime = time.time()
+# md2 = process(md)
+# endtime = time.time()
 # print(md.wp.tags, md.wp.categories)
-print(md2.wp.tags, md2.wp.categories)
+# print(md2.wp)
+# print(endtime-starttime)

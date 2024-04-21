@@ -41,8 +41,8 @@ class Category(AbstractCategory):
         res = requests.post(self.URL_CREATE_CAT, auth=AUTHORIZATION)
         if res.status_code == 400:
             self.id = res.json()['data']['term_id'] if res.json()['data'] and res.json()['data']['term_id'] else None
-            retrieve_status = self.retrieve().status
-            return Message(retrieve_status, f"Category({self.name} already exist! Retrieve {retrieve_status})", res.status_code)
+            # retrieve_status = self.retrieve().status
+            return Message(True, f"Category({self.name} already exist! )", res.status_code)
         elif res.status_code == 201:
             return Message(setAttrForObj(self, res.json()), f"Category({self.name}) create successfully!",
                            res.status_code)

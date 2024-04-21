@@ -3,21 +3,28 @@
 # Author: leitaosha
 # Email: 473153250@qq.com
 # CreateTime: 2024/4/20
-import time
 from concurrent.futures import ThreadPoolExecutor, wait
 
-from md_processors.TagProcessor import TagProcessor
 from md_processors.CategoryProcessor import CategoryProcessor
+from md_processors.ContentProcessor import ContentProcessor
+from md_processors.TagProcessor import TagProcessor
+from md_processors.WPMarkdown import WPMarkdown
 from utiles.config import *
-from md_processors.WPMarkdown import WPMarkdown, getMarkdown
 
+# processors, All formats and content are processed in here.
 MDProcessors = [
     TagProcessor,
     CategoryProcessor,
+    ContentProcessor,
 ]
 
 
 def process(markdown: WPMarkdown):
+    """
+    Markdown processed into submittable format: tags, categories
+    :param markdown:
+    :return:
+    """
     with ThreadPoolExecutor(THREAD_POOL_MAX_WORKER) as executor:
         futures = []
         for processor in MDProcessors:
@@ -28,10 +35,9 @@ def process(markdown: WPMarkdown):
         wait(futures)
     return markdown
 
-mdPath = r'E:\Project\PythonProject\postWordpress\测试.md'
-# 原生md
-md = getMarkdown(mdPath)
-# 处理md
-md2 = process(md)
-print(md2.wp)
-
+# mdPath = r'E:\Project\PythonProject\postWordpress\测试.md'
+# # 原生md
+# md = getMarkdown(mdPath)
+# # 处理md
+# md2 = process(md)
+# print(md2.wp)

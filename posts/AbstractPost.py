@@ -6,8 +6,8 @@
 
 
 from abc import ABC, abstractmethod
-from utiles.config import *
-from utiles.util import setAttrForObj
+from utils.config import *
+from utils.util import setAttrForObj
 
 
 # Posts类

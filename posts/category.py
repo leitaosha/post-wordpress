@@ -9,8 +9,8 @@ from urllib.parse import urljoin
 import requests
 
 from posts.AbstractCategory import AbstractCategory
-from utiles.config import *
-from utiles.util import setAttrForObj
+from utils.config import *
+from utils.util import setAttrForObj
 from error.Message import Message
 
 

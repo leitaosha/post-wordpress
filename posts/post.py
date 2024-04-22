@@ -9,9 +9,9 @@ from urllib.parse import urljoin
 import requests
 
 from error.Message import Message
-from utiles.util import setAttrForObj
+from utils.util import setAttrForObj
 from posts.AbstractPost import AbstractPost
-from utiles.config import *
+from utils.config import *
 
 
 class Post(AbstractPost):

@@ -6,8 +6,8 @@
 from urllib.parse import urljoin
 from posts.AbstractTag import AbstractSingleTag
 import requests
-from utiles.config import WORDPRESS_SITE, AUTHORIZATION
-from utiles.util import setAttrForObj
+from utils.config import WORDPRESS_SITE, AUTHORIZATION
+from utils.util import setAttrForObj
 from error.Message import Message
 
 

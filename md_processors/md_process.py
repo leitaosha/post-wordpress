@@ -9,7 +9,7 @@ from md_processors.CategoryProcessor import CategoryProcessor
 from md_processors.ContentProcessor import ContentProcessor
 from md_processors.TagProcessor import TagProcessor
 from md_processors.WPMarkdown import WPMarkdown
-from utiles.config import *
+from utils.config import *
 
 # processors, All formats and content are processed in here.
 MDProcessors = [

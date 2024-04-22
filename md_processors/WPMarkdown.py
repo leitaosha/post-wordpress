@@ -8,7 +8,7 @@ import frontmatter
 from md_processors.AbstractMarkdownInfo import AbstractMarkdownInfo
 from md_processors.WordPressMeta import WordPressMeta
 from posts.post import Post
-from utiles.util import setAttrForObj
+from utils.util import setAttrForObj
 
 
 class WPMarkdown(AbstractMarkdownInfo):

@@ -4,7 +4,7 @@
 # Email: 473153250@qq.com
 # CreateTime: 2024/4/19
 from posts.AbstractPost import AbstractPost
-from utiles.util import setAttrForObj
+from utils.util import setAttrForObj
 
 
 class WordPressMeta(AbstractPost):

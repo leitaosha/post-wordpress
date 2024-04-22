@@ -13,6 +13,7 @@ from error.CustomeError import CustomError
 from md_processors.WPMarkdown import getMarkdown
 from md_processors.md_process import process
 
+from urllib.parse import unquote
 
 def ob_push_wp(mdPath):
     # 原生md
@@ -20,7 +21,7 @@ def ob_push_wp(mdPath):
     mdOrigin2 = mdOrigin
     clearConsole()
     try:
-        console("## 暂时控制台")
+        console("# 这里将暂时作为控制台")
         console("## 正在推送中...")
         # 处理md
         mdProcessed = process(mdOrigin)
@@ -38,7 +39,7 @@ def ob_push_wp(mdPath):
         # 获取返回数据
         new_attributes = {
             'id': post.id,
-            "link": post.link,
+            "link": unquote(post.link),
         }
         # 仅修改wp字段
         mdOrigin.post.metadata['wp'].update(new_attributes) if 'wp' in mdOrigin.post.metadata else ''

@@ -6,8 +6,10 @@
 from concurrent.futures import ThreadPoolExecutor
 
 from markdown import markdown
-from md_processors.CustomMDExtensions import HighLightExtension
+from markdown.extensions.codehilite import CodeHiliteExtension
+
 from md_processors.AbstractMDProcessor import MDProcessor
+from md_processors.CustomMDExtensions import HighLightExtension
 from md_processors.WPMarkdown import WPMarkdown
 
 
@@ -16,7 +18,11 @@ class ContentProcessor(MDProcessor):
     def __init__(self, wp_markdown: WPMarkdown, thread_pool_executor: ThreadPoolExecutor):
         super().__init__(wp_markdown, thread_pool_executor)
         self.Extensions = [HighLightExtension(),
-
+                           'markdown.extensions.extra',
+                           'markdown.extensions.codehilite', #代码高亮扩展
+                           'markdown.extensions.toc',
+                           'markdown.extensions.tables',
+                           'markdown.extensions.fenced_code',
                            ]
 
     def preprocess(self):

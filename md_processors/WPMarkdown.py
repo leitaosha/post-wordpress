@@ -74,7 +74,9 @@ def getMarkdown(md_path):
     with open(md_path, 'r', encoding='utf-8') as f:
         parseMd = frontmatter.load(f)
     obj = Post()
-    if type(parseMd.metadata) is dict and "wp" in parseMd.metadata and parseMd.metadata['wp']:
+    if "wp" not in parseMd.metadata:
+        parseMd.metadata['wp'] = {}
+    if type(parseMd.metadata) is dict and parseMd.metadata['wp']:
         wpMeta = dict(parseMd.metadata['wp'])
         setAttrForObj(obj, wpMeta)
     return WPMarkdown(parseMd,obj)

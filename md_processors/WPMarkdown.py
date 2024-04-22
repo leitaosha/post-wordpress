@@ -75,7 +75,8 @@ def getMarkdown(md_path):
         parseMd = frontmatter.load(f)
     obj = Post()
     setAttrForObj(obj, parseMd.metadata)
-    obj.tags, obj.categories = [], []
+    # exclue some fields
+    obj.tags, obj.categories, obj.author = [], [], []
     if type(parseMd.metadata) is dict and "wp" in parseMd.metadata and parseMd.metadata['wp']:
         wpMeta = dict(parseMd.metadata['wp'])
         setAttrForObj(obj, wpMeta)

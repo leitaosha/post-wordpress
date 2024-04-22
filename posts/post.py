@@ -34,7 +34,8 @@ class Post(AbstractPost):
         """
         if self.id:
             return self.update()
-        res = requests.post(self.URL_POST, json=self.postData, auth=AUTHORIZATION, verify=False)
+        res = requests.post(self.URL_POST, json=self.postData, auth=AUTHORIZATION)
+        print(res.json())
         return Message(setAttrForObj(self, res.json()), f"<<{self.title}>> pushed successfully!", res.status_code) \
             if res.status_code == 201 else Message(False, f"<<{self.title}>> pushed failed!", res.status_code)
 

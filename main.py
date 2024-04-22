@@ -8,19 +8,16 @@ from concurrent.futures import ThreadPoolExecutor
 
 from md_processors.WPMarkdown import getMarkdown
 from md_processors import md_process
+from md_processors.md_process import process
 from posts.tag import Tag
 from concurrent.futures import as_completed
 
 
-mdPath = r'E:\Project\PythonProject\postWordpress\测试.md'
+mdPath = r'E:\笔记\博客\分享\实用工具\推荐一款Win版流畅、便捷、好看的快速启动器—DawnLauncher.md'
 # 原生md
 md = getMarkdown(mdPath)
 # 处理md
-md2 = md_process.process(md)
-# print(md.wp)
-# starttime = time.time()
+md2 = process(md)
+print(md2.wp)
+print(md2.wp.create())
 
-# endtime = time.time()
-# print(md.wp.tags, md.wp.categories)
-# print(md2.wp)
-# print(endtime-starttime)

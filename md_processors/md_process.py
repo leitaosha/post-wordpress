@@ -35,9 +35,4 @@ def process(markdown: WPMarkdown):
         wait(futures)
     return markdown
 
-# mdPath = r'E:\Project\PythonProject\postWordpress\测试.md'
-# # 原生md
-# md = getMarkdown(mdPath)
-# # 处理md
-# md2 = process(md)
-# print(md2.wp)
+

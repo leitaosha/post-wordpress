@@ -36,3 +36,5 @@ def process(markdown: WPMarkdown):
     return markdown
 
 
+def after_process(markdown: WPMarkdown):
+    pass

@@ -12,7 +12,7 @@ from utils.util import setAttrForObj
 
 
 class WPMarkdown(AbstractMarkdownInfo):
-    def __init__(self, post: frontmatter.Post):
+    def __init__(self, post: frontmatter.Post, postMeta: Post):
         super().__init__()
         # yaml必备信息
         self.title = None
@@ -20,13 +20,13 @@ class WPMarkdown(AbstractMarkdownInfo):
         self.excerpt = None
         # 分类
         self.categories = None
-        # wp元信息
-        self.wp = Post()
         # 初始化yaml和content
         self.post = post if type(post) is frontmatter.Post and post else None
         self.md_content, self.md_yaml = self.post.content, self.post.metadata if self.post else None
         # 初始化属性赋值
         self.__setAttr()
+        # wp元信息
+        self.wp = postMeta
 
     def getTags(self):
         return self.tags
@@ -74,14 +74,18 @@ def getMarkdown(md_path):
     with open(md_path, 'r', encoding='utf-8') as f:
         parseMd = frontmatter.load(f)
     obj = Post()
-    setAttrForObj(obj, parseMd.metadata)
-    # exclue some fields
-    obj.tags, obj.categories, obj.author = [], [], []
     if type(parseMd.metadata) is dict and "wp" in parseMd.metadata and parseMd.metadata['wp']:
         wpMeta = dict(parseMd.metadata['wp'])
         setAttrForObj(obj, wpMeta)
-    parseMd.metadata['wp'] = obj
-    return WPMarkdown(parseMd)
+    return WPMarkdown(parseMd,obj)
+
+# mdPath = r'E:\笔记\博客\分享\实用工具\测试推送.md'
+# # 原生md
+# mdOrigin = getMarkdown(mdPath)
+# print(mdOrigin.wp)
+
+
+
 
 # test
 # path = r"/测试.md"

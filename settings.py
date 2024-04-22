@@ -14,15 +14,23 @@ WORDPRESS_SITE = ''
 WP_OPTIONS = {'status': 'publish',
               # article status in wordpress : draft(suggest), publish(suggest), future, pending, private
               'comment_status': 'open',
+              # article comment status in wordpress : open, closed
               'sticky': 'false',
+              # Whether to pin this article to the top
+              'ping_status': 'closed',
+              'format': 'standard',
               }
 
-# Markdown process
-CONVERT_TO_HTML = False
+# Markdown process.
+HIGH_LIGHT_TEXT = True  # Convert "==content==" to "<mark>content</mark>"
 
-# Attachment process
-CONVERT_ATTACHMENTS = True
+# In development
+# HIGH_LIGHT_CODE = True
+# CONVERT_ATTACHMENTS = True
+
 
 # ELSE
 AUTHORIZATION = (USERNAME, PASSWORD)
-THREAD_POOL_MAX_WORKER = 5
+
+# Thread Pool
+THREAD_POOL_MAX_WORKER = 8

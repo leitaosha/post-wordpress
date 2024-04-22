@@ -13,11 +13,12 @@ from posts.tag import Tag
 from concurrent.futures import as_completed
 
 
-mdPath = r'E:\笔记\博客\分享\实用工具\推荐一款Win版流畅、便捷、好看的快速启动器—DawnLauncher.md'
+mdPath = r'E:\笔记\博客\分享\实用工具\测试推送.md'
 # 原生md
 md = getMarkdown(mdPath)
 # 处理md
 md2 = process(md)
 print(md2.wp)
 print(md2.wp.create())
+print(md2.wp)
 

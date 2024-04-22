@@ -35,7 +35,6 @@ class Post(AbstractPost):
         if self.id:
             return self.update()
         res = requests.post(self.URL_POST, json=self.postData, auth=AUTHORIZATION)
-        print(res.json())
         return Message(setAttrForObj(self, res.json()), f"<<{self.title}>> pushed successfully!", res.status_code) \
             if res.status_code == 201 else Message(False, f"<<{self.title}>> pushed failed!", res.status_code)
 
@@ -71,30 +70,3 @@ class Post(AbstractPost):
         return self.__dict__.__str__()
 
 
-# 测试
-# obj = Post()
-# print(obj.__dict__)
-#
-# print(obj.toDict())
-
-# 提交
-# obj = Post()
-# obj.content = "content22222222222222"
-# obj.title = 'title222222222222'
-# obj.excerpt = 'excerpt2222222222222222222222222'
-# obj.categories = [65]
-# obj.tags = [66, 52, 22]
-# print(obj.create())
-# print(json.dumps(obj.postData))
-# print(type(obj.postData['tags']))
-# print(type(obj.postData()))
-# 更新
-# obj = Post()
-# obj.id = 99
-# obj.content = "contentUp"
-# obj.title = 'titleUp'
-# obj.excerpt = 'excerptUp'
-# obj.categories = [65]
-# obj.tags = [66, 52]
-# print(obj.create())
-# print(obj.postData)

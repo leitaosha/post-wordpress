@@ -3,6 +3,7 @@
 # Author: leitaosha
 # Email: 473153250@qq.com
 # CreateTime: 2024/4/19
+import copy
 import os.path
 import sys
 import time
@@ -15,10 +16,11 @@ from md_processors.md_process import process
 
 from urllib.parse import unquote
 
+
 def ob_push_wp(mdPath):
     # 原生md
     mdOrigin = getMarkdown(mdPath)
-    mdOrigin2 = mdOrigin
+    md_copy = copy.deepcopy(mdOrigin)
     clearConsole()
     try:
         console("# 这里将暂时作为控制台")
@@ -52,7 +54,7 @@ def ob_push_wp(mdPath):
         backNum()
         # 写入markdown
         with open(mdPath, 'w', encoding='utf-8') as f:
-            f.write(frontmatter.dumps(mdOrigin2.post))
+            f.write(frontmatter.dumps(md_copy.post))
 
 
 def console(msg: str):

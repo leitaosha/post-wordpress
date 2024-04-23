@@ -1,6 +1,6 @@
 # Introduction
 
-[![Using post-wordpress](https://img.shields.io/badge/Using-Get%20Researchergate-blue?style=flat-round&logo=github)](https://github.com/leitaosha/post-wordpress)[![GitHub Repo stars](https://img.shields.io/github/stars/leitaosha/post-wordpress?label=⭐post-wordpress)](https://github.com/leitaosha/post-wordpress)[![License](https://img.shields.io/github/license/leitaosha/post-wordpress)](https://github.com/leitaosha/post-wordpress/LICENSE)
+[![GitHub Repo stars](https://img.shields.io/github/stars/leitaosha/post-wordpress?label=⭐post-wordpress)](https://github.com/leitaosha/post-wordpress)  [![License](https://img.shields.io/github/license/leitaosha/post-wordpress?label=🧾License)](https://github.com/leitaosha/post-wordpress/LICENSE)     ![Download](https://img.shields.io/github/downloads/leitaosha/post-wordpress/total?label=⏬Download)
 
 This is a python project that works with [Obsidian](https://obsidian.md/) to push Markdown to [WordPress](https://wordpress.com/). Specifically, it works with the [Templater](https://github.com/SilentVoid13/Templater) plugin. 
   

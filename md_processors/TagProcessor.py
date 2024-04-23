@@ -16,7 +16,7 @@ class TagProcessor(MDProcessor):
     def __init__(self, markdown: WPMarkdown, thread_pool_executor: ThreadPoolExecutor):
         # process tags
         super().__init__(markdown, thread_pool_executor)
-        self.tags = markdown.tags
+        self.tags = markdown.tags if markdown.tags else []
 
     def preprocess(self):
         futures = [self.thread_pool_executor.submit(self.createTag, tagName) for tagName in self.tags]

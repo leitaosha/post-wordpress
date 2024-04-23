@@ -24,19 +24,19 @@ def ob_push_wp(mdPath):
     clearConsole()
     try:
         console("# 这里将暂时作为控制台")
-        console("## 正在推送中...")
+        console("### 正在推送中...")
         # 处理md
         mdProcessed = process(mdOrigin)
         # markdown推送
         post = mdProcessed.wp
         text = post.create()
         if text.status:
-            console("## 推送成功")
+            console("### 推送成功")
         else:
-            console("## 推送失败")
-            raise CustomError('## 推送失败')
-        console("### " + text.msg)
-        console("## 即将返回...")
+            console("### 推送失败")
+            raise CustomError('### 推送失败')
+        console("#### " + text.msg)
+        console("### 即将返回...")
         backNum()
         # 获取返回数据
         new_attributes = {
@@ -50,7 +50,7 @@ def ob_push_wp(mdPath):
             f.write(frontmatter.dumps(mdOrigin.post))
     except Exception as e:
         console(e.__str__())
-        console('出错了，不要担心，文档不会丢失！！')
+        console('## 出错了，不要担心，文档不会丢失！！')
         backNum()
         # 写入markdown
         with open(mdPath, 'w', encoding='utf-8') as f:

@@ -19,7 +19,7 @@ class ContentProcessor(MDProcessor):
         super().__init__(wp_markdown, thread_pool_executor)
         self.Extensions = [HighLightExtension(),
                            'markdown.extensions.extra',
-                           'markdown.extensions.codehilite', #代码高亮扩展
+                           # 'markdown.extensions.codehilite', #代码高亮扩展
                            'markdown.extensions.toc',
                            'markdown.extensions.tables',
                            'markdown.extensions.fenced_code',

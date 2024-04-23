@@ -84,3 +84,5 @@ __pycache__
 *.ipynb
 private_*
 private_settings.py
+/default.css
+/text.html

@@ -45,7 +45,7 @@ Download source code. [Click to download](https://github.com/leitaosha/post-word
 ### Edit Config  
 
 1. Open the root directory of the project and edit `settings.py`。It is highly recommended that you create a copy of `settings.py` and name it `private_settings.py`. Then edit `private_settings.py` for protecting your password.
-2. Set up **Templater** plug-in to run python scripts. You need `python.exe` path, `push_wp.py` path and a template, see [push wp template](/doc/push wp template.md). 
+2. Set up **Templater** plug-in to run python scripts. You need `python.exe` path, `push_wp.py` path and a template, see [push wp template](./doc/push wp template.md). 
 	- Put the `push wp template.md` into the template folder. ![](https://s2.loli.net/2024/04/23/i2y3a1trhLqbvdX.png)
 	- Add a function named `pushWordpress`, add command as follows:![](https://s2.loli.net/2024/04/23/lucdXVorhNbkG75.png)
 	```cmd

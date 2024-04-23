@@ -1,0 +1,3 @@
+Markdown==3.6
+python_frontmatter==1.1.0
+Requests==2.31.0

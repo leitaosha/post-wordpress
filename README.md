@@ -42,6 +42,8 @@ or
 
 Download source code. [Click to download](https://github.com/leitaosha/post-wordpress/archive/refs/heads/master.zip)
 
+Enter the project root directory and execute `pip install -r requirements.txt`
+
 ### Edit Config  
 
 1. Open the root directory of the project and edit `settings.py`。It is highly recommended that you create a copy of `settings.py` and name it `private_settings.py`. Then edit `private_settings.py` for protecting your password.

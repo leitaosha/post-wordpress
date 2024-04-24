@@ -64,8 +64,8 @@ Enter the project root directory and execute `pip install -r requirements.txt`
 #### Required  Parameters
   
 ```python  
-# Your account of WordPress REST API.  
-# 你的wordpress账户  
+# Your BASIC AUTHENTICATION.  
+# 你的 BASIC AUTHENTICATION  
 USERNAME = ''  
 PASSWORD = ''  
 WORDPRESS_SITE = ''  
@@ -99,7 +99,11 @@ WP_OPTIONS = {
 
 #### Markdown frontmatter 
 
-`title`, `categories` must be set in your markdown. 
+`title`, `categories`, and `tags` need to be written separately under the first-level fields, and other setting fields are placed in the `wp` field.
+
+Settings in markdown file take precedence over `settings.py`
+
+Example: 
 
 ```yaml
 ---
@@ -114,4 +118,5 @@ wp:
  slug: # For friendly links, pure English numbers and underlines are recommended.
  # there are many params, please see https://developer.wordpress.org/rest-api/reference/posts/ ....
 ---
+
 ```

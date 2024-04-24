@@ -76,6 +76,5 @@ def backNum():
 
 if __name__ == '__main__':
     MD_PATH = sys.argv[1]
-    # MD_PATH = r'E:\笔记\博客\分享\实用工具\测试推送.md'
     if os.path.exists(MD_PATH):
         ob_push_wp(MD_PATH)

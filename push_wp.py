@@ -42,6 +42,7 @@ def ob_push_wp(mdPath):
         new_attributes = {
             'id': post.id,
             "link": unquote(post.link),
+            'status': post.status,
         }
         # 仅修改wp字段
         mdOrigin.post.metadata['wp'].update(new_attributes) if 'wp' in mdOrigin.post.metadata else ''

@@ -16,5 +16,4 @@ class HighLightExtension(Extension):
         md.inlinePatterns.register(SimpleTagInlineProcessor(r'()==(.*?)==', 'mark'), 'mark', 175)
 
 
-class CodeBlock():
-    pass
+

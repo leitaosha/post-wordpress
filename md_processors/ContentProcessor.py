@@ -22,11 +22,12 @@ class ContentProcessor(MDProcessor):
             'markdown.extensions.tables',
             'markdown.extensions.fenced_code',
             'markdown.extensions.wikilinks',
-            'pymdownx.arithmatex',
-            'pymdownx.tasklist',
-            'pymdownx.mark',
-            'pymdownx.details',
-            'pymdownx.tilde',
+            'pymdownx.arithmatex',  #
+            'pymdownx.tasklist',    # 任务列表
+            'pymdownx.mark',    # 等号高亮
+            'pymdownx.details',  # details
+            'pymdownx.tilde',   # ~ 下标
+            'pymdownx.caret',   # ^ ^ 上标
         ]
 
     def preprocess(self):

@@ -28,11 +28,11 @@ class ContentProcessor(MDProcessor):
         ]
         # mathjax2.x
         self.Extensions.append(arithmatex.makeExtension(
-            preview=True if Enable_MathJax_2_Preview else False)) if not Enable_MathJax_2 else None
-        # pandoc 上下标
+            preview=True if Enable_MathJax_2_Preview else False)) if Enable_MathJax_2 else None
+        # pandoc sub and sup
         self.Extensions.append('pymdownx.caret') if Enable_SUB_SUP else None
         self.Extensions.append('pymdownx.tilde') if Enable_SUB_SUP else None
-        # 等号高亮
+        # == highlight
         self.Extensions.append('pymdownx.mark') if Enable_HIGHLIGHT else None
         # details
         self.Extensions.append('pymdownx.details') if Enable_HTML_DETAILS else None

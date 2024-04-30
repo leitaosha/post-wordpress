@@ -38,8 +38,9 @@ WP_OPTIONS = {
 
 # Whether to handle text highlighting in Obsidian
 # 是否处理Obsidian中的文本高亮
-# eg: "==content==" ---> "<mark>content</mark>"
 HIGH_LIGHT_TEXT = True
+
+Enable_MathJax_2 = False
 
 # In development
 # HIGH_LIGHT_CODE = True

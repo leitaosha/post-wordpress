@@ -6,9 +6,11 @@
 from concurrent.futures import ThreadPoolExecutor
 
 from markdown import markdown
+from pymdownx import arithmatex
 
 from md_processors.AbstractMDProcessor import MDProcessor
 from md_processors.WPMarkdown import WPMarkdown
+from utils.config import *
 
 
 class ContentProcessor(MDProcessor):
@@ -22,13 +24,18 @@ class ContentProcessor(MDProcessor):
             'markdown.extensions.tables',
             'markdown.extensions.fenced_code',
             'markdown.extensions.wikilinks',
-            'pymdownx.arithmatex',  #
-            'pymdownx.tasklist',    # 任务列表
-            'pymdownx.mark',    # 等号高亮
-            'pymdownx.details',  # details
-            'pymdownx.tilde',   # ~ 下标
-            'pymdownx.caret',   # ^ ^ 上标
+            'pymdownx.tasklist',  # 任务列表
         ]
+        # mathjax2.x
+        self.Extensions.append(arithmatex.makeExtension(
+            preview=True if Enable_MathJax_2_Preview else False)) if not Enable_MathJax_2 else None
+        # pandoc 上下标
+        self.Extensions.append('pymdownx.caret') if Enable_SUB_SUP else None
+        self.Extensions.append('pymdownx.tilde') if Enable_SUB_SUP else None
+        # 等号高亮
+        self.Extensions.append('pymdownx.mark') if Enable_HIGHLIGHT else None
+        # details
+        self.Extensions.append('pymdownx.details') if Enable_HTML_DETAILS else None
 
     def preprocess(self):
         """

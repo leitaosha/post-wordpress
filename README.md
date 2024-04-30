@@ -51,13 +51,14 @@ Enter the project root directory and execute `pip install -r requirements.txt`
 2. Set up **Templater** plug-in to run python scripts. You need `python.exe` path, `push_wp.py` path and a template, see [push wp template](./doc/push wp template.md). 
 	- Put the `push wp template.md` into the template folder. ![](https://s2.loli.net/2024/04/23/i2y3a1trhLqbvdX.png)
 	- Add a function named `pushWordpress`, add command as follows:![](https://s2.loli.net/2024/04/23/lucdXVorhNbkG75.png)
-	```cmd
-	<your python path> <path of push_wp.py> <% tp.file.path() %>
+	
+3. ```cmd
+	<your python path> <path of push_wp.py> "<% tp.file.path() %>"
 	```
 
 	For example:
 	```cmd
-	E:\venv\Scripts\python.exe E:\postWordpress\push_wp.py <% tp.file.path() %>
+	E:\venv\Scripts\python.exe E:\postWordpress\push_wp.py "<% tp.file.path() %>"
 	```
 
 

@@ -6,9 +6,9 @@
 
 import frontmatter
 from md_processors.AbstractMarkdownInfo import AbstractMarkdownInfo
-from md_processors.WordPressMeta import WordPressMeta
 from posts.post import Post
 from utils.util import setAttrForObj
+from md_processors.check_params import check_params
 
 
 class WPMarkdown(AbstractMarkdownInfo):
@@ -73,29 +73,5 @@ class WPMarkdown(AbstractMarkdownInfo):
 def getMarkdown(md_path):
     with open(md_path, 'r', encoding='utf-8') as f:
         parseMd = frontmatter.load(f)
-    obj = Post()
-    if "wp" not in parseMd.metadata:
-        parseMd.metadata['wp'] = {}
-    if type(parseMd.metadata) is dict and parseMd.metadata['wp']:
-        wpMeta = dict(parseMd.metadata['wp'])
-        setAttrForObj(obj, wpMeta)
-    return WPMarkdown(parseMd,obj)
-
-# mdPath = r'E:\笔记\博客\分享\实用工具\测试推送.md'
-# # 原生md
-# mdOrigin = getMarkdown(mdPath)
-# print(mdOrigin.wp)
-
-
-
-
-# test
-# path = r"/测试.md"
-# markdown = getMarkdown(path)
-# print(markdown.title, markdown.wp.link, str(markdown.wp))
-# 更新测试
-# print("-----update-----")
-# wpmeta = WordPressMeta()
-# wpmeta.link = "测试"
-# markdown.updateYaml({"title": '测试更新', 'wp': wpmeta})
-# print(markdown.title, markdown.wp.wpLink, markdown.post.metadata)
+    parseMd.metadata = check_params(parseMd.metadata)
+    return WPMarkdown(parseMd, Post())

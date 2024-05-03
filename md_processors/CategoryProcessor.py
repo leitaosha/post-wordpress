@@ -20,7 +20,8 @@ class CategoryProcessor(MDProcessor):
         self.categories = markdown.categories
 
     def preprocess(self):
-        futures = [self.thread_pool_executor.submit(self.createCategory, categoryName) for categoryName in self.categories]
+        futures = [self.thread_pool_executor.submit(self.createCategory, categoryName) for categoryName in
+                   self.categories]
         return futures
 
     def createCategory(self, categoryName: str):

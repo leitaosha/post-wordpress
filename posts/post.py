@@ -3,15 +3,14 @@
 # Author: leitaosha
 # Email: 473153250@qq.com
 # CreateTime: 2024/4/18
-import json
 from urllib.parse import urljoin
 
 import requests
 
 from error.Message import Message
-from utils.util import setAttrForObj
 from posts.AbstractPost import AbstractPost
 from utils.config import *
+from utils.util import setAttrForObj
 
 
 class Post(AbstractPost):
@@ -35,19 +34,22 @@ class Post(AbstractPost):
         if self.id:
             return self.update()
         res = requests.post(self.URL_POST, json=self.postData, auth=AUTHORIZATION)
-        return Message(setAttrForObj(self, res.json()), f"<<{self.title}>> pushed successfully!", res.status_code) \
-            if res.status_code == 201 else Message(False, f"<<{self.title}>> pushed failed!", res.status_code)
+        return Message(setAttrForObj(self, res.json()), f"id: {self.id}, title: {self.title} pushed successfully!",
+                       res.status_code) \
+            if res.status_code == 201 else Message(False, f"id: {self.id}, title: {self.title} pushed failed!",
+                                                   res.status_code)
 
     def update(self):
         res = requests.post(self.URL_UPDATE_POST, json=self.postData, auth=AUTHORIZATION)
         if res.status_code == 200:
-            return Message(setAttrForObj(self, res.json()), f"<<{self.title}>> updated successfully!", res.status_code)
+            return Message(setAttrForObj(self, res.json()), f"id: {self.id}, title: {self.title} updated successfully!",
+                           res.status_code)
         # if delete article remotely, then create.
         elif res.status_code == 404:
             self.id = None
             self.create()
         else:
-            return Message(False, f"<<{self.title}>> updated failed!", res.status_code)
+            return Message(False, f"id: {self.id}, title: {self.title}  updated failed!", res.status_code)
 
     def delete(self):
         pass
@@ -68,5 +70,3 @@ class Post(AbstractPost):
 
     def __str__(self):
         return self.__dict__.__str__()
-
-

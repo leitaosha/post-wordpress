@@ -12,7 +12,7 @@ import frontmatter
 from md_processors.WPMarkdown import getMarkdown
 from md_processors.md_process import process
 from urllib.parse import unquote
-from utils.config import *
+
 
 # def ob_push_wp(mdPath):
 #     # 原生md
@@ -61,17 +61,16 @@ def ob_push_wp(mdPath):
     # 删除原文
     clearConsole()
     log.info('这将短暂作为控制台使用')
-    log.info('开始提交文章')
+    log.info(f'开始提交文章 -> {mdOrigin.title}')
     try:
         log.info("正在推送中...")
         text = run(mdOrigin)
-        if text.status:
-            log.info("推送成功")
-        else:
-            log.error("推送失败")
         log.info(text.msg)
-        log.info("即将返回...")
-        backNum(3)
+        if text.status:
+            log.info("推送/更新 成功！")
+        else:
+            log.error("推送 失败！")
+        time.sleep(3)
         # 获取返回数据
         post = mdOrigin.wp
         new_attributes = {
@@ -88,7 +87,7 @@ def ob_push_wp(mdPath):
         log.error(e.__str__())
         log.error(e)
         log.error('出错了，不要担心，文档不会丢失！！')
-        time.sleep(2)
+        time.sleep(3)
         # 写入markdown
         with open(mdPath, 'w', encoding='utf-8') as f:
             f.write(frontmatter.dumps(md_copy.post))
@@ -112,33 +111,27 @@ def clearConsole():
         f.write('')
 
 
-def backNum(n):
-    for i in range(n):
-        time.sleep(1)
-        console(f'{n - i}')
-    time.sleep(1)
-
-
-def howLog(sys1: sys):
+def howLog(argv: list):
     """
     check path and log to file
-    :param sys1: sys
+    :param argv: sys
     :return:
     """
-    logg = log_to_file()
-    if len(sys1.argv) > 1 and os.path.exists(sys1.argv[1]):
+    if len(argv) > 1 and not os.path.exists(os.path.normpath(argv[1].replace('/', '\\'))):
+        logg = log_to_file()
         logg.error('There is no path params or path does not exist！ Exit!!!')
         sys.exit(1)
     else:
-        logg = log_to_file(sys1.argv[1])
+        logg = log_to_file(argv[1])
     return logg
 
 
 if __name__ == '__main__':
     # get log
-    # log = howLog(sys)
-    # MD_PATH = sys.argv[1]
-
-    MD_PATH = r'E:\笔记\博客\推送测试.md'
+    log = howLog(sys.argv)
+    MD_PATH = sys.argv[1]
     ob_push_wp(MD_PATH)
+
+    # MD_PATH = r'E:\笔记\博客\推送测试.md'
+    # ob_push_wp(MD_PATH)
     # print(sys.argv)

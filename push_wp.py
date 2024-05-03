@@ -4,6 +4,7 @@
 # Email: 473153250@qq.com
 # CreateTime: 2024/4/19
 import copy
+import logging
 import os.path
 import sys
 import time
@@ -111,19 +112,19 @@ def clearConsole():
         f.write('')
 
 
-def howLog(argv: list):
+def howLog(argv: list) -> logging.Logger:
     """
     check path and log to file
     :param argv: sys
     :return:
     """
-    if len(argv) > 1 and not os.path.exists(os.path.normpath(argv[1].replace('/', '\\'))):
+    if len(argv) > 1 and os.path.exists(os.path.normpath(argv[1].replace('/', '\\'))):
+        logg = log_to_file(argv[1])
+        return logg
+    else:
         logg = log_to_file()
         logg.error('There is no path params or path does not exist！ Exit!!!')
         sys.exit(1)
-    else:
-        logg = log_to_file(argv[1])
-    return logg
 
 
 if __name__ == '__main__':

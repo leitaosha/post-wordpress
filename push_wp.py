@@ -19,7 +19,7 @@ from utils import util
 def ob_push_wp(md: WPMarkdown):
     # 删除原文
     clearConsole()
-    logg.info("{::^80}".format("NEW POST AT" + " " + str(util.getTody()) + " " + str(util.getWeekday())))
+    log.info("{::^80}".format("NEW POST AT" + " " + str(util.getTody()) + " " + str(util.getWeekday())))
     log.info(f'开始提交文章 -> {md.title}')
     log.info("正在推送中...")
     try:

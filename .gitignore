@@ -87,4 +87,5 @@ private_settings.py
 /default.css
 /text.html
 /main.py
-/log.txt
+log.txt
+*.log

@@ -110,10 +110,7 @@ if __name__ == '__main__':
     # get log
     log = howLog(sys.argv)
     MD_PATH = sys.argv[1]
-    # 测试
-    # log = log_to_file()
-    # MD_PATH = r'E:\笔记\博客\推送测试.md'
-    # 原生md
+    # 原md
     mdOrigin = getMarkdown(MD_PATH)
     md_copy = copy.deepcopy(mdOrigin)
     # 删除文档以作控制台

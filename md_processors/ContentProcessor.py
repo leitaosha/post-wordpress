@@ -12,6 +12,8 @@ from md_processors.AbstractMDProcessor import MDProcessor
 from md_processors.WPMarkdown import WPMarkdown
 from utils.config import *
 from pymdownx import caret
+from md_processors.CustomMDExtensions import SupExtension
+from md_processors.CustomMDExtensions import SubExtension
 
 
 class ContentProcessor(MDProcessor):
@@ -29,11 +31,14 @@ class ContentProcessor(MDProcessor):
         ]
         # mathjax
         if Enable_MathJax:
-            self.Extensions.append(arithmatex.makeExtension(preview=True if Enable_MathJax_Preview else None))
+            self.Extensions.append(
+                arithmatex.makeExtension(preview=True if Enable_MathJax_Preview else None, generic=True))
         # pandoc sub and sup
         if Enable_SUB_SUP:
-            self.Extensions.append('pymdownx.caret')
-            self.Extensions.append('pymdownx.tilde')
+            # self.Extensions.append('pymdownx.caret')
+            # self.Extensions.append('pymdownx.tilde')
+            self.Extensions.append(SupExtension())
+            self.Extensions.append(SubExtension())
         # == highlight
         self.Extensions.append('pymdownx.mark') if Enable_HIGHLIGHT else None
         # details

@@ -40,12 +40,12 @@ WP_OPTIONS = {
 # 是否处理Obsidian中的文本高亮
 Enable_HIGHLIGHT = True
 
-# MathJax2.x
-Enable_MathJax_2 = False
-Enable_MathJax_2_Preview = False
+# MathJax
+Enable_MathJax = False
+Enable_MathJax_Preview = False
 
 # pandoc ~下标sub~ ^上标sup^
-Enable_SUB_SUP = True
+Enable_SUB_SUP = False
 
 # enable details
 Enable_HTML_DETAILS = True
@@ -58,7 +58,5 @@ Enable_HTML_DETAILS = True
 # 线程池，当你有较多的本地图片或标签时，可适当修改该值
 THREAD_POOL_MAX_WORKER = 8
 
-# The following settings cannot be modified！！！
-# 以下内容不可修改！！！
-AUTHORIZATION = (USERNAME, PASSWORD)
+
 

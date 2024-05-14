@@ -13,3 +13,7 @@ except ImportError:
 
 # root path of project
 BASE_PROJECT_PATH = util.getRootPath()
+
+# The following settings cannot be modified！！！
+# 以下内容不可修改！！！
+AUTHORIZATION = (USERNAME, PASSWORD)
